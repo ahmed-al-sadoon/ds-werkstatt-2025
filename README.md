@@ -1,7 +1,47 @@
 # DS Werkstatt 2025 - Serenity BDD with Cucumber
 
+## Serenity BDD 
+ist ein leistungsstarkes Framework, das die Erstellung von qualitativ hochwertigen automatisierten Akzeptanztests erleichtert. Es bietet umfangreiche Berichts- und Dokumentationsfunktionen, die es ermöglichen, die Testergebnisse und den Fortschritt der Tests auf eine sehr anschauliche Weise darzustellen.
+Mehr Informationen über Serenity BBD sind unter [Serenity BDD User Manual](https://serenity-bdd.github.io/) zu finden.
+
+## Cucumber
+ist ein Tool, das die BDD (Behavior Driven Development) Methodik unterstützt. Es ermöglicht das Schreiben von Tests in einer menschenlesbaren Sprache, die von allen Beteiligten verstanden werden kann. Mehr Informationen über Cucumber sind unter [Cucumber Documentation](https://cucumber.io/docs) zu finden.
+
+```Gherkin
+Funktionalität: Suche nach Schlüsselwort
+
+  Szenario: Suche nach einem Begriff
+    Angenommen Sergey recherchiert Dinge im Internet
+    Wenn er nach "Cucumber" sucht
+    Dann sollte er Informationen über "Cucumber" sehen
+```
+
+## Serenity BDD und Cucumber 
+arbeiten hervorragend zusammen, um automatisierte Tests zu erstellen, die sowohl für **Web-Tests** mit Selenium als auch für **API-Tests** mit RestAssured geeignet sind. Serenity fördert gutes Testautomationsdesign und unterstützt mehrere Designmuster, einschließlich klassischer Page Objects, Lean Page Objects/Action Classes und des flexiblen Screenplay-Musters.
+
+### Page Objects
+Page Object ist eine Klasse, die die Interaktion mit Web-Elementen in einer Anwendung kapselt. Sie repräsentieren eine Seite oder einen Teil einer Seite in der Anwendung und enthalten Methoden, um mit den Elementen auf dieser Seite zu interagieren.
+
+### Lean Page Objects/Action Classes
+Lean Page Objects/Action Classes sind eine vereinfachte Version von Page Objects, die sich auf die Aktionen konzentrieren, die auf einer Seite ausgeführt werden können, anstatt auf die Struktur der Seite selbst. Sie enthalten Methoden, die bestimmte Aktionen ausführen, wie z.B. das Ausfüllen eines Formulars oder das Klicken auf einen Button.
+
+### Screenplay-Muster
+Das Screenplay-Muster ist ein fortschrittlicheres und flexibleres Designmuster, das Tests in Bezug auf Akteure und die von ihnen ausgeführten Aufgaben beschreibt. Aufgaben werden als Objekte dargestellt, die von einem Akteur ausgeführt werden, anstatt als Methoden. Dies macht sie flexibler und komponierbarer, auf Kosten einer etwas wortreicheren Darstellung.
+
+
+
+
+
+
+
+
+
+
+
+
 ## https://googlechromelabs.github.io/chrome-for-testing/#stable
 Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support for both web testing with Selenium, and API testing using RestAssured.
+
 
 Serenity strongly encourages good test automation design, and supports several design patterns, including classic Page Objects, the newer Lean Page Objects/ Action Classes approach, and the more sophisticated and flexible Screenplay pattern.
 
