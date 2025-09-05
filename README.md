@@ -41,7 +41,7 @@ public class LoginPage extends PageObject {
 }
 ````
 #### WebElementFacade
-ist eine von Serenity BDD bereitgestellte Erweiterung des Selenium-Interfaces WebElement. Sie bietet zusätzliche Methoden für Synchronisation, Abfragen und Interaktionen mit Webelementen. Dadurch werden Tests stabiler und der Code lesbarer. Mehr Informationen über Web-Elemente definieren sind unter [Serenity Page Elements](https://serenity-bdd.github.io/docs/guide/page_elements)
+ist eine von Serenity BDD bereitgestellte Erweiterung des Selenium-Interfaces WebElement. Sie bietet zusätzliche Methoden für Synchronisation, Abfragen und Interaktionen mit Webelementen. Dadurch werden Tests stabiler und der Code lesbarer. Mehr Informationen über Web-Elemente definieren sind unter [Serenity Page Elements](https://serenity-bdd.github.io/docs/guide/page_elements) zu finden.
 ### Lean Page Objects/Action Classes
 Lean Page Objects/Action Classes sind eine vereinfachte Version von Page Objects, die sich auf die Aktionen konzentrieren, die auf einer Seite ausgeführt werden können, anstatt auf die Struktur der Seite selbst. Sie enthalten Methoden, die bestimmte Aktionen ausführen, wie z.B. das Ausfüllen eines Formulars oder das Klicken auf einen Button.
 #### Lean Page Objects
@@ -92,6 +92,22 @@ User user = new User("Max", "Mustermann");
 actor.remember("aktuellerUser", user);
 User aktuellerUser = actor.recall("aktuellerUser");
 ````
+#### Mehr Informationen über Screenplay sind unter [Screenplay Fundamentals](https://serenity-bdd.github.io/docs/screenplay/screenplay_fundamentals) zu finden.
+
+# Entwicklungsumgebung einrichten
+* ## [Java 21](https://www.oracle.com/java/technologies/downloads/#jdk21-windows). Wähle JDK 21 -> Windows -> x64 Compressed Archive
+  Herunterladen und unter C:\Program Files entpacken
+* ## [Maven 3.9.9](https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/). Wähle _apache-maven-3.9.9-bin.zip_
+  Herunterladen und unter C:\Program Files entpacken
+* ## JAVA_HOME & MAVEN_HOME:
+  * Öffene PowerShell als Administrator
+  * Kopiere das folgende Script in PowerShell und ändere die Pfade entsprechend und dann Ausführen
+    ````batch
+    [System.Environment]::SetEnvironmentVariable('JAVA_HOME', 'C:\Pfad\zu\deinem\jdk', [System.EnvironmentVariableTarget]::Machine)
+    [System.Environment]::SetEnvironmentVariable('MAVEN_HOME', 'C:\Pfad\zu\deinem\maven', [System.EnvironmentVariableTarget]::Machine)
+    ````
+* ## [Chrome Enterprise](https://chromeenterprise.google/download/)
+* ## [Chrome-Driver](https://googlechromelabs.github.io/chrome-for-testing/#stable)
 
 
 
@@ -100,7 +116,22 @@ User aktuellerUser = actor.recall("aktuellerUser");
 
 
 
-## https://googlechromelabs.github.io/chrome-for-testing/#stable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support for both web testing with Selenium, and API testing using RestAssured.
 
 
