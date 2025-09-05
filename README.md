@@ -21,16 +21,77 @@ arbeiten hervorragend zusammen, um automatisierte Tests zu erstellen, die sowohl
 
 ### Page Objects
 Page Object ist eine Klasse, die die Interaktion mit Web-Elementen in einer Anwendung kapselt. Sie repräsentieren eine Seite oder einen Teil einer Seite in der Anwendung und enthalten Methoden, um mit den Elementen auf dieser Seite zu interagieren.
+````java
+public class LoginPage extends PageObject {
 
+    @FindBy(id = "username")
+    private WebElementFacade usernameField;
+
+    @FindBy(id = "password")
+    private WebElementFacade passwordField;
+
+    @FindBy(id = "login")
+    private WebElementFacade loginButton;
+
+    public void loginAs(String username, String password) {
+        usernameField.type(username);
+        passwordField.type(password);
+        loginButton.click();
+    }
+}
+````
+#### WebElementFacade
+ist eine von Serenity BDD bereitgestellte Erweiterung des Selenium-Interfaces WebElement. Sie bietet zusätzliche Methoden für Synchronisation, Abfragen und Interaktionen mit Webelementen. Dadurch werden Tests stabiler und der Code lesbarer. Mehr Informationen über Web-Elemente definieren sind unter [Serenity Page Elements](https://serenity-bdd.github.io/docs/guide/page_elements)
 ### Lean Page Objects/Action Classes
 Lean Page Objects/Action Classes sind eine vereinfachte Version von Page Objects, die sich auf die Aktionen konzentrieren, die auf einer Seite ausgeführt werden können, anstatt auf die Struktur der Seite selbst. Sie enthalten Methoden, die bestimmte Aktionen ausführen, wie z.B. das Ausfüllen eines Formulars oder das Klicken auf einen Button.
+#### Lean Page Objects
+````java
+class SearchForm {
+    static By SEARCH_FIELD = By.cssSelector("#searchInput");
+}
+````
+#### Action Classes
+````java
+public class SearchFor extends UIInteractionSteps {
+
+    @Step("Suche nach Begriff {0}")
+    public void term(String term) {
+        $(SearchForm.SEARCH_FIELD).clear();
+        $(SearchForm.SEARCH_FIELD).sendKeys(term, Keys.ENTER);
+    }
+}
+````
 
 ### Screenplay-Muster
-Das Screenplay-Muster ist ein fortschrittlicheres und flexibleres Designmuster, das Tests in Bezug auf Akteure und die von ihnen ausgeführten Aufgaben beschreibt. Aufgaben werden als Objekte dargestellt, die von einem Akteur ausgeführt werden, anstatt als Methoden. Dies macht sie flexibler und komponierbarer, auf Kosten einer etwas wortreicheren Darstellung.
+Das Screenplay-Muster ist ein modernes Testautomatisierungs-Pattern, das von Serenity BDD unterstützt wird. Es beschreibt Tests als Interaktionen von „Akteuren“ (Actors), die Aufgaben (Tasks) und Interaktionen (Actions) auf einer Anwendung ausführen. Web-Elementen werden als Target-Objekte definiert.
+#### Eigenschaften
+* Ein Actor besitzt Fähigkeiten (Abilities), z. B. das Bedienen eines Browsers.
+* Ein Actor führt Aktionen aus, z. B. das Klicken auf Buttons oder das Eingeben von Text.
+* Ein Actor beantwortet Fragen (Questions), um Informationen aus der Anwendung abzufragen (z. B. Text, Sichtbarkeit, Status).
+* Ein Actor kann Informationen speichern und später wieder abrufen – mit den Methoden remember und recall.
+* Ein Actor wird in den Step-Definitionen verwendet, um Testschritte natürlich und lesbar zu beschreiben.
+#### Beispiel:
+````java
+Actor sergey = Actor.named("Sergey");
+sergey.can(BrowseTheWeb.with(driver));
+sergey.attemptsTo(Open.url("https://wikipedia.org"));
+sergey.remember("searchTerm", "Cucumber");
+// Später im Test
+String term = sergey.recall("searchTerm");
+````
+#### Einige Beispiele, wie remember und recall mit verschiedenen Datentypen:
+````java
+actor.remember("userId", 42);
+Integer userId = actor.recall("userId");
 
+List<String> items = Arrays.asList("Apfel", "Banane");
+actor.remember("warenkorb", items);
+List<String> warenkorb = actor.recall("warenkorb");
 
-
-
+User user = new User("Max", "Mustermann");
+actor.remember("aktuellerUser", user);
+User aktuellerUser = actor.recall("aktuellerUser");
+````
 
 
 
